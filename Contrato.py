@@ -1,4 +1,22 @@
-import pandas as pd
+massa = {
+    'Base': 0.0,
+    'Organica': 10.0}
+
+molho = {
+    'Base': 0,
+    'Organico': 5.0}
+
+queijo = {
+    'Sem queijo': 0,
+    'Mussarela': 4.0,
+    'Cheddar': 2.0}
+
+cobertura = {
+    'Base': 0,
+    'Calabreza': 10.0,
+    'Batata': 5.0,
+    'Chocolate': 15.0}
+
 
 def montar_calcular(massa ,molho ,queijo ,cobertura):
     """
@@ -25,14 +43,20 @@ def cadastrar(tipo, nome, preço):
     :param preço: float
     
     """
-    pass
+    var = globals()[tipo]
+    try:
+        var[nome] = preço
+    except:
+        raise ValueError
 
-def remover(nome):
+
+def remover(tipo, nome):
     """
     Remove um ingrediente da base de dados
     
     Levanta exeção caso não exista tal ingrediente na base de dados
-
+    
+    :param tipo: str
     :param nome: str
     
     """
