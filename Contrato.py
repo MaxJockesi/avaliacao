@@ -1,18 +1,18 @@
-massa = {
+massas = {
     'Base': 0.0,
     'Organica': 10.0}
 
-molho = {
-    'Base': 0,
+molhos = {
+    'Base': 0.0,
     'Organico': 5.0}
 
-queijo = {
-    'Sem queijo': 0,
+queijos = {
+    'Sem queijo': 0.0,
     'Mussarela': 4.0,
     'Cheddar': 2.0}
 
-cobertura = {
-    'Base': 0,
+coberturas = {
+    'Base': 0.0,
     'Calabreza': 10.0,
     'Batata': 5.0,
     'Chocolate': 15.0}
@@ -32,7 +32,24 @@ def montar_calcular(massa ,molho ,queijo ,cobertura):
     :return list pizza, float preco:
 
     """
-    pass
+    pizza = [massa, molho, queijo, cobertura]
+    
+    try:
+        price1 = massas[massa]
+        price2 = molhos[molho]
+        price3 = queijos[queijo]
+        price4 = coberturas[cobertura]
+        
+        preco = 25.0 + price1 + price2 + price3 + price4
+    except:
+        raise ValueError
+        
+    print(pizza)
+    print(preco)
+    
+    return pizza, preco
+
+montar_calcular('Base', 'Base', 'Cheddar', 'Batata')
 
 def cadastrar(tipo, nome, preço):
     """
@@ -60,7 +77,11 @@ def remover(tipo, nome):
     :param nome: str
     
     """
-    pass
+    var = globals()[tipo]
+    try:
+        var.pop(nome)
+    except:
+        raise ValueError
 
 def listar():
     """
@@ -69,5 +90,12 @@ def listar():
     :return dict dados:
     
     """
-    pass
+    dicionario = {
+        'Massas': massas,
+        'Molhos': molhos,
+        'Queijos': queijos,
+        'Coberturas': coberturas}
+    
+    return dicionario
+
     
