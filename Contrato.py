@@ -1,3 +1,5 @@
+# Finge que se eu tivesse mais tempo eu não faria isso aqui como variavel global :3
+
 massas = {
     'Base': 0.0,
     'Organica': 10.0}
